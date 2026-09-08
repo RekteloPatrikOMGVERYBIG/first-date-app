@@ -1,0 +1,20 @@
+# Creates a web service only. Create PostgreSQL separately and set its internal URL.
+services:
+  - type: web
+    name: first-date-api
+    runtime: python
+    plan: free
+    buildCommand: pip install -r backend/requirements.lock.txt
+    startCommand: python -m uvicorn app.main:app --app-dir backend --host 0.0.0.0 --port $PORT --workers 1
+    healthCheckPath: /api/health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.14.6
+      - key: APP_ENV
+        value: production
+      - key: COOKIE_SECURE
+        value: "1"
+      - key: OWNER_PASSWORD
+        sync: false
+      - key: DATABASE_URL
+        sync: false

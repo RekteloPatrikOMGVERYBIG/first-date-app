@@ -1,0 +1,20 @@
+name: first-date-planner
+services:
+  db:
+    image: postgres:17
+    environment:
+      POSTGRES_USER: dateplanner
+      POSTGRES_DB: first_date
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Run setup-postgres.ps1 first}
+    ports:
+      - "127.0.0.1:5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U dateplanner -d first_date"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+    restart: unless-stopped
+volumes:
+  postgres_data:

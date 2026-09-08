@@ -1,0 +1,244 @@
+main {
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: 32px 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  text-align: center;
+}
+
+main > h1 {
+  max-width: 760px;
+  line-height: 1.2;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 100px;
+  background-color: #b72f50;
+  font-family: inherit;
+  color: white;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover { background-color: #92334e; }
+button:disabled { opacity: .6; cursor: wait; }
+.owner-dashboard { max-width: 780px; }
+.owner-dashboard h2 { margin-top: 36px; }
+.owner-dashboard summary { cursor: pointer; color: var(--text-h); padding: 12px 0; }
+.owner-dashboard a { color: #873e53; }
+
+.heart-button {
+  width: 90px;
+  height: 90px;
+  margin: 64px 0 32px;
+  flex-shrink: 0;
+  transform: rotate(-45deg);
+  position: relative;
+  background: #b72f50;
+  border-radius: 0;
+  border: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+.heart-button::before,
+.heart-button::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: inherit;
+  border-radius: 50%;
+}
+
+.heart-button::before {
+  top: -50%;
+  left: 0;
+}
+
+.heart-button::after {
+  left: 50%;
+  top: 0;
+}
+
+.heart-button span {
+  position: absolute;
+  top: 25%;
+  left: 75%;
+  display: block;
+  z-index: 2;
+  transform: translate(-50%, -50%) rotate(45deg);
+  font-size: 24px;
+  color: white;
+}
+
+@media (hover: hover) {
+  .heart-button:hover {
+    transform: rotate(-45deg) scale(1.06);
+    filter: drop-shadow(0 6px 10px rgb(183 47 80 / 25%));
+  }
+}
+
+.heart-button:active {
+  transform: rotate(-45deg) scale(0.98);
+}
+
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--text-h);
+  outline-offset: 6px;
+}
+
+.question-card {
+  width: 100%;
+  max-width: 540px;
+  padding: clamp(24px, 6vw, 44px);
+  box-sizing: border-box;
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  background: var(--bg);
+  box-shadow: var(--shadow);
+  text-align: left;
+  animation: card-arrive .45s ease both;
+}
+
+.question-card h1 {
+  font-size: clamp(30px, 6vw, 40px);
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+  margin: 24px 0 12px;
+}
+
+.step-label {
+  font-size: 14px;
+  color: #9d5066;
+  letter-spacing: 1px;
+}
+
+.question-card progress {
+  width: 100%;
+  height: 8px;
+  accent-color: #b72f50;
+  border: none;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+progress::-webkit-progress-bar { background: #efdfd8; }
+progress::-webkit-progress-value { background: linear-gradient(90deg, #ba7c89, #8b3d54); transition: width .3s ease; }
+progress::-moz-progress-bar { background: #8b3d54; }
+
+.question-card form {
+  margin-top: 24px;
+}
+
+.question-card label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.question-card input,
+.question-card textarea {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid #d8bdb8;
+  border-radius: 12px;
+  font: inherit;
+  color: var(--text-h);
+  background: #fffdf9;
+}
+
+.form-error {
+  color: #a22e4d;
+  margin-top: 8px;
+}
+
+.question-card textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.answer-item {
+  padding: 18px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.answer-item dt {
+  font-weight: 600;
+  color: var(--text-h);
+}
+
+.answer-item dd {
+  margin: 8px 0 12px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.answer-item button {
+  min-height: 44px;
+}
+
+.preview-note {
+  margin-top: 24px;
+  font-size: 14px;
+}
+
+.confirmation {
+  text-align: center;
+}
+
+.confirmation-heart {
+  font-size: 56px;
+  line-height: 1.5;
+}
+
+.form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.form-actions button {
+  min-height: 44px;
+  flex: 1 1 auto;
+}
+
+.secondary-button {
+  background: transparent;
+  color: var(--text-h);
+  border: 1px solid var(--text);
+}
+
+.secondary-button:hover { background: #f4e5de; }
+
+@keyframes card-arrive {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .question-card { animation: none; }
+  .heart-button {
+    transition: none;
+  }
+
+  .heart-button:hover,
+  .heart-button:active {
+    transform: rotate(-45deg);
+  }
+}

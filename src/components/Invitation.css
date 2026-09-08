@@ -1,0 +1,110 @@
+.invitation { min-height: 100svh; overflow: clip; }
+.invitation-header {
+  display: flex; align-items: center; justify-content: space-between;
+  max-width: 1200px; margin: auto; padding: 28px 40px; gap: 20px;
+}
+.wordmark { font: italic 27px var(--heading); text-decoration: none; color: var(--text-h); }
+.wordmark span { font-size: 13px; margin-left: 8px; color: #ac5266; }
+.header-note { font-size: 11px; letter-spacing: 1px; }
+.invitation-main { min-height: auto; position: relative; isolation: isolate; padding: 30px 20px 48px; gap: 0; }
+.eyebrow { font-size: 10px; letter-spacing: 2.5px; color: #9c6570; text-align: center; }
+.invitation-title { margin: 22px 0 20px; font-size: clamp(48px, 7vw, 82px); letter-spacing: -2px; line-height: 1.04; }
+.invitation-title em, .invitation-letter h2 em { color: #a04a60; font-weight: 400; }
+.invitation-description { font-size: 14px; line-height: 1.8; }
+.envelope-scene {
+  position: relative; width: min(100%, 410px); height: 255px; margin: 58px 0 40px;
+  perspective: 1000px; isolation: isolate; transition: height .8s ease, margin .8s ease;
+}
+.envelope-back {
+  position: absolute; inset: 0; background: #dbaaa6; border-radius: 8px;
+  box-shadow: 0 25px 50px -15px #8e4c5250, 0 3px 8px #8e4c5210;
+}
+.envelope-front {
+  position: absolute; inset: 0; z-index: 3; pointer-events: none; border-radius: 6px;
+  background: linear-gradient(145deg, #f5d8ca, #ecc3b7);
+  clip-path: polygon(0 0, 50% 52%, 100% 0, 100% 100%, 0 100%);
+}
+.envelope-front::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(0deg, #f3d3c5, #f9e2d6);
+  clip-path: polygon(0 100%, 50% 45%, 100% 100%);
+}
+.envelope-front > span {
+  position: absolute; bottom: 24px; left: 0; right: 0; z-index: 1;
+  font: italic 16px var(--heading); color: #9f6c68;
+}
+.envelope-flap {
+  position: absolute; inset: 0; height: 55%; z-index: 4;
+  background: linear-gradient(165deg, #f9e0d4, #e8bfb4);
+  clip-path: polygon(0 0, 100% 0, 50% 100%); transform-origin: top;
+  transition: transform .65s ease, z-index 0s .3s;
+}
+.envelope-open-button {
+  position: absolute; inset: 0; z-index: 5; width: 100%; background: transparent;
+  border-radius: 8px; color: var(--text-h);
+}
+.envelope-open-button:hover { background: transparent; }
+.wax-seal {
+  display: grid; place-items: center; position: absolute; top: 40%; left: 50%;
+  width: 62px; height: 62px; transform: translate(-50%, -50%); border-radius: 50%;
+  color: #f0bbbe; font-size: 28px; border: 4px double #c6757c;
+  background: radial-gradient(circle at 30% 30%, #b76370, #853349);
+  box-shadow: 0 5px 9px #6d26343d; transition: scale .3s ease;
+}
+.envelope-open-button:hover .wax-seal { scale: 1.09; }
+.envelope-caption { position: absolute; top: calc(100% + 16px); left: 0; right: 0; font-size: 12px; color: #98636c; }
+.is-open.envelope-scene { height: 670px; margin-top: 85px; margin-bottom: 0; }
+.is-open .envelope-back, .is-open .envelope-front { top: auto; height: 230px; bottom: 0; }
+.is-open .envelope-front { z-index: 1; }
+.is-open .envelope-flap { top: auto; bottom: 100px; height: 130px; transform: rotateX(180deg); z-index: 0; }
+.invitation-letter {
+  position: absolute; z-index: 2; top: 0; left: 5%; width: 90%; padding: 30px 18px 32px;
+  background: linear-gradient(115deg, #fffdf8, #fff8ef); border: 1px solid #edddd0;
+  box-shadow: 0 -8px 35px #7f4c3910; border-radius: 4px; animation: letter-reveal .9s ease both;
+}
+.letter-kicker { font: italic 15px var(--heading); color: #a06d70; }
+.invitation-letter h2 { margin: 18px 0; font-size: clamp(29px, 5vw, 36px); }
+.invitation-letter > p:not(.letter-kicker) { font-size: 13px; }
+.start-date-button {
+  margin-top: 22px; width: 100%; max-width: 230px; min-height: 52px;
+  border-radius: 100px; background: #873e53; box-shadow: 0 6px 16px #873e5326;
+}
+.start-date-button span { margin-left: 35px; }
+.dodge-area { position: relative; height: 120px; margin-top: 8px; }
+.decline-button {
+  position: absolute; transform: translate(-50%, -50%); width: 92px; min-height: 44px;
+  padding: 8px; border: 1px solid #dcc4bd; border-radius: 100px; background: #fff9f2;
+  color: #86626a; font-size: 13px; touch-action: manipulation; user-select: none;
+  transition: left .18s ease, top .18s ease;
+}
+.decline-button:hover { background: #fff0e9; }
+.playful-message { min-height: 65px; max-width: 260px; margin: auto; color: #93636e; }
+.invitation-footnote { margin-top: 28px; font: italic 14px var(--heading); color: #9c7779; }
+.invitation-footer { display: flex; justify-content: center; align-items: center; gap: 18px; padding: 24px 16px; font-size: 9px; letter-spacing: 1.5px; }
+.invitation-footer > span:nth-child(2) { font-size: 23px; color: #ad6b7a; }
+.floating-petals { position: absolute; inset: 0; pointer-events: none; z-index: -1; overflow: hidden; }
+.floating-petals span { position: absolute; color: #c99b9c; font: 36px var(--heading); animation: petal-float 7s ease-in-out infinite alternate; }
+.floating-petals span:nth-child(1) { top: 15%; left: 15%; transform: rotate(-20deg); }
+.floating-petals span:nth-child(2) { top: 35%; right: 15%; animation-delay: -3s; font-size: 24px; }
+.floating-petals span:nth-child(3) { top: 65%; left: 22%; animation-delay: -5s; font-size: 24px; }
+.floating-petals span:nth-child(4) { top: 10%; right: 25%; animation-delay: -2s; }
+.floating-petals span:nth-child(5) { top: 80%; right: 20%; animation-delay: -4s; }
+@keyframes letter-reveal { from { opacity: 0; transform: translateY(100px) scale(.95); } to { opacity: 1; transform: translateY(0) scale(1); } }
+@keyframes petal-float { from { translate: 0 0; opacity: .35; } to { translate: 10px -22px; opacity: .75; } }
+@media (max-width: 520px) {
+  .invitation-header { padding: 22px 24px; }
+  .header-note { display: none; }
+  .invitation-main { padding-top: 22px; }
+  .eyebrow { font-size: 8px; letter-spacing: 1.7px; }
+  .envelope-scene { height: 210px; }
+  .is-open.envelope-scene { height: 700px; }
+  .invitation-letter { padding-inline: 12px; }
+  .decline-button { width: 76px; }
+  .floating-petals span:nth-child(1) { left: 3%; }
+  .floating-petals span:nth-child(2) { right: 3%; }
+  .invitation-footer { font-size: 8px; gap: 10px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .envelope-scene, .envelope-flap, .wax-seal, .decline-button { transition: none; }
+  .invitation-letter, .floating-petals span { animation: none; }
+}
